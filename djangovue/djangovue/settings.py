@@ -27,11 +27,25 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+# CORS
+# https://pypi.org/project/django-cors-headers/
+
+CORS_ALLOW_ALL_ORIGINS = True
+
+CORS_ALLOWED_ORIGINS = [
+    "https://example.com",
+    "https://sub.example.com",
+    "http://localhost:8080",
+    "http://127.0.0.1:9000",
+]
+
+
 
 # Application definition
 
 INSTALLED_APPS = [
     'listelement',
+    "corsheaders",
     'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -49,6 +63,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "corsheaders.middleware.CorsMiddleware",
 ]
 
 ROOT_URLCONF = 'djangovue.urls'
@@ -70,6 +85,10 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'djangovue.wsgi.application'
+
+
+
+
 
 
 # Database
